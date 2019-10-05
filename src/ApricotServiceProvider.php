@@ -3,6 +3,7 @@
 namespace Levana\Apricot;
 
 use Illuminate\Support\ServiceProvider;
+use Levana\Apricot\Console\InstallCommand;
 
 /**
  * Class ApricotServiceProvider
@@ -18,6 +19,12 @@ class ApricotServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->getPublishes();
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+            ]);
+        }
     }
 
     /**
@@ -36,8 +43,8 @@ class ApricotServiceProvider extends ServiceProvider
     protected function getPublishes(): void
     {
         $this->publishes([
-            __DIR__ . '../../config/apricot.php' => config_path('apricot.php')
-        ]);
+            __DIR__ . '../../config/apricot.php' => config_path('apricot.php'),
+        ], 'apricot:config');
     }
 
     /**
