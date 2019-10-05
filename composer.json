@@ -1,0 +1,26 @@
+{
+    "name": "levana/apricot",
+    "description": "This is admin panel",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Levana",
+            "email": "dev@levana.com.ua"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "levana\\Apricot\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "levana\\Apricot\\ApricotServiceProvider"
+            ]
+        }
+    }
+}
